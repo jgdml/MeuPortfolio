@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Language" content="pt-br">
+
+<html>
+    <link rel="stylesheet" href="style.css" />
+
+
+    <body class="mainBody">
+
+        <header 
+            id="nome" 
+            onmouseover="changeName('full')" 
+            onmouseout="changeName('default')"
+            class="header">
+            jgdml
+        </header>
+
+
+        <div id="about" class="section">
+            <div class="sectionTitle">
+                Sobre
+            </div>
+            
+            <div class="sectionContainer">
+                <text class="normalText">
+                    Brasileiro 
+                    <br><br>
+                    Estudante de Engenharia de Software
+                    <br><br>
+                    Experiência Profissional:
+                    <br><br>
+                    Email:
+                </text>
+
+                <text class="normalText">
+                    20 anos
+                    <br><br>
+                    IFPR - Instituto Federal do Paraná
+                    <br><br>
+                    Estagiário de Informática
+                    <br><br>
+                    jgdml2801@gmail.com 
+                </text>
+            </div>
+
+        </div>
+
+
+        <div id="repos" class="section">
+
+            <div class="sectionTitle">
+                Repositórios
+            </div>
+
+            <div id="reposContainer" class="sectionContainer">
+            </div>
+        </div>
+
+
+        <div id="langs" class="section">
+            <div class="sectionTitle">
+                Linguagens ja Usadas
+            </div>
+
+            <div id="langList" class="langContainer">
+            </div>
+        </div>
+
+
+    </body>
+    
+
+
+    <script>
+
+        function changeName (changeTo){
+            // localizar elemento nome
+            var nameHeader = document.getElementById("nome")
+
+            // trocar valor do elemento
+            if (changeTo == "full"){
+                nameHeader.innerHTML = "João Gabriel Durante Marques de Lima"
+            }
+            else {
+                nameHeader.innerHTML = "jgdml"
+            }
+        }
+
+
+        function createRepoCard(repoInfo, contributorNumber){
+
+            // localizar elemento da seçao de repositorio
+            var repoSection = document.getElementById("reposContainer")
+
+            // criar elemento do tipo a
+            var repo = document.createElement("a")
+
+            // criar texto nome do repositorio
+            var nameText = document.createElement("text");
+            nameText.innerHTML = repoInfo.name
+
+
+            var contributorText = document.createElement("text");
+            contributorText.innerHTML = contributorNumber+" Contribuidores"
+
+        
+            // criar texto ultimo commit do repositorio
+            var updatedText = document.createElement("text")
+            // transformar em date para formatar
+            var dt = new Date(repoInfo.updated_at)
+            updatedText.innerHTML = "Ultimo commit em "+ (dt.getDate() +"/"+dt.getMonth()+"/"+dt.getFullYear())
+
+            // definir estilo
+            updatedText.className = "repoCardText"
+            contributorText.className = "repoCardText"
+
+            // estilo, link e configuracoes do card
+            repo.className = "repoCard"
+            repo.href = repoInfo.html_url
+            repo.target = "blank"
+            repo.style.textDecoration = "none"
+
+            // adicionar elementos no card
+            repo.appendChild(contributorText)
+            repo.appendChild(nameText)
+            repo.appendChild(updatedText)
+
+            // adicionar card na secao
+            repoSection.appendChild(repo)
+        }
+
+
+        async function getRepos (){
+            // fazer get para pegar informaçao do repositorio
+            var request = await fetch("https://api.github.com/users/jgdml/repos")
+            
+            await request.json().then(json => {
+
+                // organizar por commit mais recente
+                json.sort((a, b) => {
+                    if (a.updated_at > b.updated_at) return -1 
+                    if (a.updated_at < b.updated_at) return 1
+                    return 0
+                })
+                
+                // ver quantos contribuidores o repositorio tem
+                json.forEach(async repoInfo => {
+                    var requestCont = await fetch(repoInfo.url+"/contributors")
+
+                    requestCont.json().then(
+                        // criar os cards
+                        contributor => createRepoCard(repoInfo, contributor.length)
+                    )
+                })
+            })
+        }
+
+        function showLangImages(){
+            var langs = [
+                "https://avatars.githubusercontent.com/u/1609975?s=280&v=4",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
+                "https://static.cloud-boxloja.com/lojas/wyfyg/produtos/cf02b27f-ab1b-4a50-ad17-4aa4e0368a94.jpg",
+                "https://seeklogo.com/images/J/java-logo-7F8B35BAB3-seeklogo.com.png",
+            ]
+
+            var langList = document.getElementById("langList")
+
+            langs.forEach(lang => {
+                var langImg = document.createElement("img")
+                langImg.src = lang
+                langImg.className = "langImg"
+
+                langList.appendChild(langImg)
+            })
+        }
+
+        // getRepos()
+
+        showLangImages()
+
+
+    </script>
+
+
+
+</html>
