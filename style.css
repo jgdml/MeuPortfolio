@@ -2,8 +2,8 @@
     /* light */
     --bgColor: white;
     --fontColor: rgb(70, 70, 70);
-    --highlightColor: rgb(137, 255, 200);
-    --activeColor: rgb(121, 224, 176);
+    --activeColor: rgb(130, 119, 236); 
+    --highlightColor: rgb(92, 81, 189);
 
     --font: 'Verdana'
 }
@@ -32,8 +32,8 @@
 .header{
     height: 10vh;
 
-    margin-top: 8vh;
-    margin-bottom: 10vh;
+    margin-top: 4vh;
+    margin-bottom: 8vh;
 
     font-size: 8vh;
     font-family: var(--font);
@@ -73,7 +73,7 @@
     font-family: var(--font);
     font-size: 2.5vh;
     font-weight: 500;
-    color: var(--fontColor);
+    color: white;
     text-align: center;
     
     cursor: default;

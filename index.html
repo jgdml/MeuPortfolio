@@ -156,6 +156,7 @@
         }
 
         function showLangImages(){
+            // lista de logos
             var langs = [
                 "https://avatars.githubusercontent.com/u/1609975?s=280&v=4",
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
@@ -163,8 +164,10 @@
                 "https://seeklogo.com/images/J/java-logo-7F8B35BAB3-seeklogo.com.png",
             ]
 
+            // identificar secao de logos
             var langList = document.getElementById("langList")
 
+            // loop para colocar imagens
             langs.forEach(lang => {
                 var langImg = document.createElement("img")
                 langImg.src = lang
@@ -174,7 +177,7 @@
             })
         }
 
-        // getRepos()
+        getRepos()
 
         showLangImages()
 
