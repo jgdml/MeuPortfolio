@@ -17,12 +17,13 @@
 
 
         <div id="about" class="section">
-            <div class="sectionTitle">
+
+            <h1 class="sectionTitle">
                 Sobre
-            </div>
+            </h1>
             
             <div class="sectionContainer">
-                <text class="normalText">
+                <p class="normalText">
                     Brasileiro 
                     <br><br>
                     Estudante de Engenharia de Software
@@ -30,9 +31,9 @@
                     Experiência Profissional:
                     <br><br>
                     Email:
-                </text>
+                </p>
 
-                <text class="normalText">
+                <p class="normalText">
                     20 anos
                     <br><br>
                     IFPR - Instituto Federal do Paraná
@@ -40,7 +41,7 @@
                     Estagiário de Informática
                     <br><br>
                     jgdml2801@gmail.com 
-                </text>
+                </p>
             </div>
 
         </div>
@@ -48,9 +49,9 @@
 
         <div id="repos" class="section">
 
-            <div class="sectionTitle">
+            <h1 class="sectionTitle">
                 Repositórios
-            </div>
+            </h1>
 
             <div id="reposContainer" class="sectionContainer">
             </div>
@@ -58,9 +59,9 @@
 
 
         <div id="langs" class="section">
-            <div class="sectionTitle">
+            <h1 class="sectionTitle">
                 Linguagens ja Usadas
-            </div>
+            </h1>
 
             <div id="langList" class="langContainer">
             </div>
@@ -135,13 +136,6 @@
             var request = await fetch("https://api.github.com/users/jgdml/repos")
             
             await request.json().then(json => {
-
-                // organizar por commit mais recente
-                json.sort((a, b) => {
-                    if (a.updated_at > b.updated_at) return -1 
-                    if (a.updated_at < b.updated_at) return 1
-                    return 0
-                })
                 
                 // ver quantos contribuidores o repositorio tem
                 json.forEach(async repoInfo => {
@@ -158,10 +152,22 @@
         function showLangImages(){
             // lista de logos
             var langs = [
-                "https://avatars.githubusercontent.com/u/1609975?s=280&v=4",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
-                "https://static.cloud-boxloja.com/lojas/wyfyg/produtos/cf02b27f-ab1b-4a50-ad17-4aa4e0368a94.jpg",
-                "https://seeklogo.com/images/J/java-logo-7F8B35BAB3-seeklogo.com.png",
+                {
+                    nome: "Dart logo",
+                    logo_url:"https://avatars.githubusercontent.com/u/1609975?s=280&v=4",
+                },
+                {
+                    nome: "Javascript logo",
+                    logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
+                },
+                {
+                    nome: "Python logo",
+                    logo_url: "https://static.cloud-boxloja.com/lojas/wyfyg/produtos/cf02b27f-ab1b-4a50-ad17-4aa4e0368a94.jpg"
+                },
+                {
+                    nome: "Java logo",
+                    logo_url: "https://seeklogo.com/images/J/java-logo-7F8B35BAB3-seeklogo.com.png"
+                }
             ]
 
             // identificar secao de logos
@@ -170,7 +176,9 @@
             // loop para colocar imagens
             langs.forEach(lang => {
                 var langImg = document.createElement("img")
-                langImg.src = lang
+                langImg.src = lang.logo_url
+                langImg.title = lang.nome
+                langImg.alt = lang.nome
                 langImg.className = "langImg"
 
                 langList.appendChild(langImg)
