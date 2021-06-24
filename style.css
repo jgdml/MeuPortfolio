@@ -24,7 +24,7 @@
 
     /* background-color: rgb(20, 20, 20); */
     background-color: var(--bgColor);
-    background-image: url("https://www.nicepng.com/png/full/11-113850_white-grunge-texture-png-vector-transparent-download-pattern.png");
+    background-image: url("./tex.png");
     background-repeat: repeat;
     margin-bottom: 10vh;
 }
@@ -56,7 +56,7 @@
 
     max-width: 55vw;
 
-    margin-bottom: 8vh;
+    margin-bottom: 5vh;
 }
 
 .sectionTitle{
@@ -88,10 +88,10 @@
 .sectionContainer{
     width: 100%;
     height: 100%;
-    padding-bottom: 5vh;
 
     display: grid;
-    row-gap: 8%;
+    
+    row-gap: 4vh;
     grid-template-columns: repeat(auto-fit, minmax(30vh, 1fr));
 }
 

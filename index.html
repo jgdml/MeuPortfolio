@@ -3,7 +3,8 @@
 
 <html>
     <link rel="stylesheet" href="style.css" />
-
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <body class="mainBody">
 
@@ -14,7 +15,7 @@
             class="header">
             jgdml
         </header>
-
+    
 
         <div id="about" class="section">
 
@@ -93,41 +94,71 @@
             // localizar elemento da seçao de repositorio
             var repoSection = document.getElementById("reposContainer")
 
-            // criar elemento do tipo a
-            var repo = document.createElement("a")
 
-            // criar texto nome do repositorio
-            var nameText = document.createElement("text");
-            nameText.innerHTML = repoInfo.name
+            var card = document.createElement("div")
+            var cardBody = document.createElement("div")
+            var title = document.createElement("h5")
+            var text = document.createElement("p")
+            var button = document.createElement("a")
+            
+            card.className = "card"
+            card.style="width: 18rem;"
+            
+            cardBody.className = "card-body"
+            title.className = "card-title"
+            text.className = "card-text"
+            button.className = "btn btn-primary"
 
-
-            var contributorText = document.createElement("text");
-            contributorText.innerHTML = contributorNumber+" Contribuidores"
-
-        
-            // criar texto ultimo commit do repositorio
-            var updatedText = document.createElement("text")
             // transformar em date para formatar
             var dt = new Date(repoInfo.updated_at)
-            updatedText.innerHTML = "Ultimo commit em "+ (dt.getDate() +"/"+dt.getMonth()+"/"+dt.getFullYear())
+            var dateText = "Ultimo commit em "+ (dt.getDate() +"/"+(dt.getMonth() == 0 ? 1 : dt.getMonth()) +"/"+dt.getFullYear())
+            
+            
+            title.innerHTML = repoInfo.name
+            text.innerHTML = dateText
+            button.innerHTML = "Ir para repositório"
+            button.href = repoInfo.html_url
+            button.target = "_blank"
+            button.style = "background-color: var(--highlightColor)"
 
-            // definir estilo
-            updatedText.className = "repoCardText"
-            contributorText.className = "repoCardText"
+            card.appendChild(cardBody)
+            cardBody.appendChild(title)
+            cardBody.appendChild(text)
+            cardBody.appendChild(button)
 
-            // estilo, link e configuracoes do card
-            repo.className = "repoCard"
-            repo.href = repoInfo.html_url
-            repo.target = "blank"
-            repo.style.textDecoration = "none"
 
-            // adicionar elementos no card
-            repo.appendChild(contributorText)
-            repo.appendChild(nameText)
-            repo.appendChild(updatedText)
+            // // criar texto nome do repositorio
+            // var nameText = document.createElement("text");
+            // nameText.innerHTML = repoInfo.name
+
+
+            // var contributorText = document.createElement("text");
+            // contributorText.innerHTML = contributorNumber+" Contribuidores"
+
+        
+            // // criar texto ultimo commit do repositorio
+            // var updatedText = document.createElement("text")
+            // // transformar em date para formatar
+            // var dt = new Date(repoInfo.updated_at)
+            // updatedText.innerHTML = "Ultimo commit em "+ (dt.getDate() +"/"+dt.getMonth()+"/"+dt.getFullYear())
+
+            // // definir estilo
+            // updatedText.className = "repoCardText"
+            // contributorText.className = "repoCardText"
+
+            // // estilo, link e configuracoes do card
+            // repo.className = "repoCard"
+            // repo.href = repoInfo.html_url
+            // repo.target = "blank"
+            // repo.style.textDecoration = "none"
+
+            // // adicionar elementos no card
+            // repo.appendChild(contributorText)
+            // repo.appendChild(nameText)
+            // repo.appendChild(updatedText)
 
             // adicionar card na secao
-            repoSection.appendChild(repo)
+            repoSection.appendChild(card)
         }
 
 
