@@ -1,0 +1,14 @@
+.repoCard{
+    height: 28vh;
+    box-shadow: 3px 3px 5px lightgray;
+    transition: 200ms;
+}
+
+.repoCard:hover{
+    transform: translate(3%, -3%);
+}
+
+.repoButton{
+    background-color: var(--highlightColor);
+    border-color: var(--activeColor);
+}

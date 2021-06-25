@@ -1,0 +1,25 @@
+:root{
+    /* light */
+    --bgColor: white;
+    --fontColor: rgb(70, 70, 70);
+    --activeColor: rgb(130, 119, 236); 
+    --highlightColor: rgb(92, 81, 189);
+
+    --font: 'Verdana'
+}
+
+[data-theme="dark"]{
+    --bgColor: rgb(20, 20, 20);
+    --fontColor: rgb(230, 230, 230);
+    --highlightColor: rgb(92, 81, 189);
+    --activeColor: rgb(130, 119, 236); 
+}
+
+
+
+.normalText{
+    color: var(--fontColor);
+    font-family: var(--font);
+    font-size: 2vh;
+}
+

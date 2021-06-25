@@ -1,0 +1,52 @@
+
+.mainBody{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+
+    /* background-color: rgb(20, 20, 20); */
+    background-color: var(--bgColor);
+    background-image: url("../img/tex.png");
+    background-repeat: repeat;
+    margin-bottom: 10vh;
+}
+
+.header{
+    height: 10vh;
+
+    margin-top: 4vh;
+    margin-bottom: 8vh;
+
+    font-size: 8vh;
+    font-family: var(--font);
+    /* color: rgb(230, 230, 230); */
+    color: var(--fontColor);
+
+    cursor: default;
+
+    transition: 200ms;
+}
+
+.header:hover{
+    font-size: 6vh;
+}
+
+.hoverIndicator{
+    color: gray;
+    font-size: 0.8vw;
+    text-align: center;
+    animation: indicatorAnim 700ms infinite;
+    animation-delay: 0s;
+    animation-direction: alternate;
+}
+
+@keyframes indicatorAnim{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+
+}
