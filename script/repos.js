@@ -1,7 +1,7 @@
 
 function formatDate(str) {
     var dt = new Date(str)
-    return "Ultimo commit em "+ (dt.getDate() +"/"+(dt.getMonth()+1) +"/"+dt.getFullYear())+""
+    return "Ultimo commit em "+ dt.toLocaleDateString()
 }
 
 
@@ -73,7 +73,7 @@ function showError(code){
 
 async function getRepos (){
     // fazer get para pegar informaçao do repositorio
-    var request = await fetch("https://api.github.com/users/jgdml/repos")
+    var request = await fetch("https://api.github.com/users/jgdml/repos", {cache: "force-cache"})
 
     if (request.status == 200){
         await request.json().then(json => {
@@ -83,9 +83,8 @@ async function getRepos (){
             })
             
             // ver quantos contribuidores o repositorio tem
-            json.forEach(async (repoInfo, index) => {
-                console.log(index)
-                var readme = await fetch(repoInfo.url+"/readme")
+            json.forEach(async repoInfo => {
+                var readme = await fetch(repoInfo.url+"/readme", {cache: "force-cache"})
 
                 if (readme.status == 200){
                     readme.json().then(
