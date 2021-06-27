@@ -19,7 +19,6 @@ function createRepoCard(repoInfo){
     title.className = "card-title"
     linguagens.className = "card-text"
     updated.className = "card-text"
-    updated.style = "color: gray;"
     button.className = "btn btn-primary repoButton"
     
     title.innerHTML = repoInfo.name
