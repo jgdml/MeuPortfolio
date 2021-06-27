@@ -12,7 +12,3 @@
     height: 8vh;
     transition: 200ms;
 }
-
-.langImg:hover{
-    height: 9vh;
-}

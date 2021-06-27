@@ -25,11 +25,19 @@
         <script src="./script/langs.js" async></script>
         <script src="./script/anims.js" async></script>
         <script src="./script/repos.js" async></script>
+        <script src="./script/theme.js" async></script>
     </head>
 
-
-
     <body class="mainBody">
+        <div class="btn-group btn-group-toggle themeButton" data-toggle="buttons">
+            <label class="btn btn-dark active">
+              <input onclick="changeTheme('dark')" type="radio" name="options" id="option1" autocomplete="off" checked> Escuro
+            </label>
+            <label class="btn btn-light">
+              <input onclick="changeTheme('light')" type="radio" name="options" id="option2" autocomplete="off"> Claro
+            </label>
+          </div>
+
         <header 
             id="nome" 
             onmouseover="changeName('full')" 
@@ -50,48 +58,39 @@
             </h1>
             
             <div class="sectionContainer">
-                <p class="normalText">
-                    Brasileiro 
-                    <br><br>
-                    Estudante de Engenharia de Software
-                    <br><br>
-                    Experiência Profissional:
-                    <br><br>
-                    Email:
-                </p>
+                <article class="normalText">
+                    Olá meu nome é João Gabriel Durante Marques de Lima, tenho <span id=age></span> anos, 
+                    sou de Paranavaí-PR e estudante de Engenharia de Software no Instituto Federal do Paraná (IFPR).
 
-                <p class="normalText">
-                    20 anos
-                    <br><br>
-                    IFPR - Instituto Federal do Paraná
-                    <br><br>
-                    Estagiário de Informática
-                    <br><br>
-                    jgdml2801@gmail.com 
-                </p>
+                </article>
             </div>
 
         </div>
 
-
         <div id="repos" class="section">
-
             <h1 class="sectionTitle">
                 Repositórios
             </h1>
 
-            <div id="reposContainer" class="sectionContainer">
-            </div>
+            <div id="reposContainer" class="repoSectionContainer"></div>
         </div>
 
 
         <div id="langs" class="section">
+
             <h1 class="sectionTitle">
                 Linguagens já utilizadas
             </h1>
 
-            <div id="langList" class="langContainer">
-            </div>
+            <div id="langList" class="langContainer"></div>
+
         </div>
+
+        <div class="section">
+            <h1 class="sectionTitle">
+                Contato
+            </h1>
+        </div>
+        
     </body>
 </html>

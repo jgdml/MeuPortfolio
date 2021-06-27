@@ -11,7 +11,7 @@ function showLangImages(){
         },
         {
             nome: "Python logo",
-            logo_url: "./img/py.jpg"
+            logo_url: "./img/py.png"
         },
         {
             nome: "Java logo",

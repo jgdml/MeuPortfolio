@@ -1,48 +1,32 @@
-
 function formatDate(str) {
     var dt = new Date(str)
     return "Ultimo commit em "+ dt.toLocaleDateString()
 }
 
-
-function decodeReadme(rd) {
-    var str = decodeURIComponent(escape(window.atob(rd)))
-    return str
-}
-
-
-function formatReadme(rd, name){
-    rd = rd.replace("#", "")
-    rd = rd.replace("##", "")
-    return rd.replace(name, "").substring(0, 100)+"...."
-}
-
-
-function createRepoCard(repoInfo, readme){
-
-    // localizar elemento da seçao de repositorio
-    var repoSection = document.getElementById("reposContainer")
-
+function createRepoCard(repoInfo, contributorNumber){
 
     var card = document.createElement("div")
     var cardBody = document.createElement("div")
     var title = document.createElement("h5")
     var text = document.createElement("p")
+    var linguagens = document.createElement("p")
     var updated = document.createElement("p")
     var button = document.createElement("a")
     
     card.className = "card repoCard"
-    card.style="width: 18rem;"
+    card.style="width: 30vh; height: 18rem"
     
     cardBody.className = "card-body"
     title.className = "card-title"
     text.className = "card-text"
+    linguagens.className = "card-text"
     updated.className = "card-text"
     updated.style = "color: gray;"
     button.className = "btn btn-primary repoButton"
     
     title.innerHTML = repoInfo.name
-    text.innerHTML = formatReadme(readme, repoInfo.name)
+    text.innerHTML = contributorNumber+" contribuidores"
+    linguagens.innerHTML = "Linguagem: "+repoInfo.language
     updated.innerHTML = formatDate(repoInfo.updated_at)
     button.innerHTML = "Ir para repositório"
     button.href = repoInfo.html_url
@@ -51,13 +35,20 @@ function createRepoCard(repoInfo, readme){
     card.appendChild(cardBody)
     cardBody.appendChild(title)
     cardBody.appendChild(text)
+    cardBody.appendChild(linguagens)
     cardBody.appendChild(updated)
     cardBody.appendChild(button)
 
-    // adicionar card na secao
-    repoSection.appendChild(card)
+    
+    return card
 }
 
+function addToRepoSection(repo){
+    // localizar elemento da seçao de repositorio
+    var repoSection = document.getElementById("reposContainer")
+
+    repoSection.appendChild(repo)
+}
 
 function showError(code){
     var repoSection = document.getElementById("reposContainer")
@@ -72,6 +63,7 @@ function showError(code){
 
 
 async function getRepos (){
+    
     // fazer get para pegar informaçao do repositorio
     var request = await fetch("https://api.github.com/users/jgdml/repos", {cache: "force-cache"})
 
@@ -81,24 +73,17 @@ async function getRepos (){
             json.sort((a, b) => {
                 return new Date(b.updated_at) - new Date(a.updated_at)
             })
-            
+
             // ver quantos contribuidores o repositorio tem
             json.forEach(async repoInfo => {
-                var readme = await fetch(repoInfo.url+"/readme", {cache: "force-cache"})
+                var contributors = await fetch(repoInfo.url+"/contributors", {cache: "force-cache"})
+                contributors = await contributors.json()
 
-                if (readme.status == 200){
-                    readme.json().then(
-                        // criar os cards
-                        rd => createRepoCard(repoInfo, decodeReadme(rd.content))
-                    )
-                }
-                else{
-                    createRepoCard(repoInfo, "Não possui readme")
-                }
-    
+
+                addToRepoSection(createRepoCard(repoInfo, contributors.length))
+
             })
         })
-
     }
     else{
         showError(request.status)

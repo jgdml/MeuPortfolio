@@ -10,3 +10,13 @@ function changeName (changeTo){
         nameHeader.innerHTML = "jgdml"
     }
 }
+
+function setAge(){
+    var age = document.getElementById("age")
+    var dt = new Date(2001, 0, 28)
+    var currentDt = new Date()
+
+    age.innerHTML = Math.trunc((currentDt - dt) / (1000 * 3600 * 24)/360)
+}
+
+setAge()

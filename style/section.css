@@ -23,7 +23,7 @@
     font-family: var(--font);
     font-size: 2.5vh;
     font-weight: 500;
-    color: white;
+    color: var(--bgColor);
     text-align: center;
     
     cursor: default;
@@ -35,7 +35,7 @@
     background-color: var(--activeColor);
 }
 
-.sectionContainer{
+.repoSectionContainer{
     width: 100%;
     height: 100%;
     

@@ -1,14 +1,27 @@
 .repoCard{
+    background-color: var(--bgColorLight);
+    color: var(--fontColor);
     height: 28vh;
-    box-shadow: 3px 3px 5px lightgray;
+    width: 15vw;
+    box-shadow: 0px 0px 0px gray;
     transition: 200ms;
+
+    justify-content: space-evenly;
 }
 
 .repoCard:hover{
-    transform: translate(3%, -3%);
+    transform: translate(-3%, -3%);
+    box-shadow: 3px 3px 0px lightgray;
 }
 
 .repoButton{
+    color: var(--bgColor);
     background-color: var(--highlightColor);
     border-color: var(--activeColor);
+}
+
+.repoButton:hover{
+    background-color: var(--activeColor);
+    color: var(--bgColor);
+
 }
