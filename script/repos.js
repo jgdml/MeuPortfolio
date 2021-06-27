@@ -57,26 +57,31 @@ function showError(code){
     repoSection.appendChild(err)
 }
 
-
 async function getRepos (){
     
-    // fazer get para pegar informaçao do repositorio
+    // fetch para pegar repositórios da API
+    // ou do cache se existir
     var request = await fetch("https://api.github.com/users/jgdml/repos", {cache: "force-cache"})
 
+    // em caso de sucesso
     if (request.status == 200){
+
+        // converter para json
         await request.json().then(json => {
 
+            // ordenar por data
             json.sort((a, b) => {
                 return new Date(b.updated_at) - new Date(a.updated_at)
             })
 
-            // ver quantos contribuidores o repositorio tem
+            // para cada repositório criar um card e adicionar na secao
             json.forEach(async repoInfo => {
                 addToRepoSection(createRepoCard(repoInfo))
             })
         })
     }
     else{
+        // caso nao for sucesso, mostrar erro
         showError(request.status)
     }
 }
