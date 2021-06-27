@@ -3,18 +3,22 @@ function showLangImages(){
     var langs = [
         {
             nome: "Dart logo",
-            logo_url: "./img/dart.png",
+            alt: "Logotipo da linguagem Dart",
+            logo_url: "./img/dart.png"
         },
         {
             nome: "Javascript logo",
-            logo_url: "./img/js.png",
+            alt: "Logotipo da linguagem Javascript",
+            logo_url: "./img/js.png"
         },
         {
             nome: "Python logo",
+            alt: "Logotipo da linguagem Python",
             logo_url: "./img/py.png"
         },
         {
             nome: "Java logo",
+            alt: "Logotipo da linguagem Java",
             logo_url: "./img/java.png"
         }
     ]
@@ -27,7 +31,7 @@ function showLangImages(){
         var langImg = document.createElement("img")
         langImg.src = lang.logo_url
         langImg.title = lang.nome
-        langImg.alt = lang.nome
+        langImg.alt = lang.alt
         langImg.className = "langImg"
 
         langList.appendChild(langImg)
