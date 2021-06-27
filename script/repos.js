@@ -3,30 +3,27 @@ function formatDate(str) {
     return "Ultimo commit em "+ dt.toLocaleDateString()
 }
 
-function createRepoCard(repoInfo, contributorNumber){
+function createRepoCard(repoInfo){
 
     var card = document.createElement("div")
     var cardBody = document.createElement("div")
     var title = document.createElement("h5")
-    var text = document.createElement("p")
     var linguagens = document.createElement("p")
     var updated = document.createElement("p")
     var button = document.createElement("a")
     
     card.className = "card repoCard"
-    card.style="width: 30vh; height: 18rem"
+    card.style="width: 18rem"
     
     cardBody.className = "card-body"
     title.className = "card-title"
-    text.className = "card-text"
     linguagens.className = "card-text"
     updated.className = "card-text"
     updated.style = "color: gray;"
     button.className = "btn btn-primary repoButton"
     
     title.innerHTML = repoInfo.name
-    text.innerHTML = contributorNumber+" contribuidores"
-    linguagens.innerHTML = "Linguagem: "+repoInfo.language
+    linguagens.innerHTML = repoInfo.language
     updated.innerHTML = formatDate(repoInfo.updated_at)
     button.innerHTML = "Ir para repositório"
     button.href = repoInfo.html_url
@@ -34,7 +31,6 @@ function createRepoCard(repoInfo, contributorNumber){
 
     card.appendChild(cardBody)
     cardBody.appendChild(title)
-    cardBody.appendChild(text)
     cardBody.appendChild(linguagens)
     cardBody.appendChild(updated)
     cardBody.appendChild(button)
@@ -76,12 +72,7 @@ async function getRepos (){
 
             // ver quantos contribuidores o repositorio tem
             json.forEach(async repoInfo => {
-                var contributors = await fetch(repoInfo.url+"/contributors", {cache: "force-cache"})
-                contributors = await contributors.json()
-
-
-                addToRepoSection(createRepoCard(repoInfo, contributors.length))
-
+                addToRepoSection(createRepoCard(repoInfo))
             })
         })
     }
