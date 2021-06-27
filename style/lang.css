@@ -9,7 +9,7 @@
 }
 
 .langImg{
-    height: 8vh;
+    height: 9vh;
     transition: 200ms;
 
     padding: 2vh;
@@ -20,5 +20,5 @@
 }
 
 .langImg:hover{
-    height: 9vh;
+    height: 9.5vh;
 }
