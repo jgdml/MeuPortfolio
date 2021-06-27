@@ -32,7 +32,7 @@ function showLangImages(){
         langImg.src = lang.logo_url
         langImg.title = lang.nome
         langImg.alt = lang.alt
-        langImg.className = "langImg"
+        langImg.className = "borderImg"
 
         langList.appendChild(langImg)
     })

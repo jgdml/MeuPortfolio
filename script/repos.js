@@ -3,12 +3,62 @@ function formatDate(str) {
     return "Ultimo commit em "+ dt.toLocaleDateString()
 }
 
+function createRepoLangImg(langName){
+    var langs = [
+        {
+            nome: "Dart",
+            alt: "Logotipo da linguagem Dart",
+            logo_url: "./img/dart.png"
+        },
+        {
+            nome: "JavaScript",
+            alt: "Logotipo da linguagem Javascript",
+            logo_url: "./img/js.png"
+        },
+        {
+            nome: "Python",
+            alt: "Logotipo da linguagem Python",
+            logo_url: "./img/py.png"
+        },
+        {
+            nome: "Java",
+            alt: "Logotipo da linguagem Java",
+            logo_url: "./img/java.png"
+        },
+        {
+            nome: "C++",
+            alt: "Logotipo da linguagem C++",
+            logo_url: "./img/cpp.png"
+        },
+        {
+            nome: "C#",
+            alt: "Logotipo da linguagem C Sharp",
+            logo_url: "./img/cs.png"
+        }
+    ]
+
+    var langImg = document.createElement("p")
+    langImg.innerHTML = langName
+
+    langs.forEach(lang => {
+        if (lang.nome == langName){
+            langImg = document.createElement("img")
+            langImg.src = lang.logo_url
+            langImg.title = lang.nome
+            langImg.alt = lang.alt
+            langImg.className = "langIcon"
+            return true
+        }
+    })
+
+    return langImg
+}
+
 function createRepoCard(repoInfo){
 
     var card = document.createElement("div")
     var cardBody = document.createElement("div")
     var title = document.createElement("h5")
-    var linguagens = document.createElement("p")
     var updated = document.createElement("p")
     var button = document.createElement("a")
     
@@ -17,12 +67,11 @@ function createRepoCard(repoInfo){
     
     cardBody.className = "card-body"
     title.className = "card-title"
-    linguagens.className = "card-text"
     updated.className = "card-text"
     button.className = "btn btn-primary repoButton"
     
     title.innerHTML = repoInfo.name
-    linguagens.innerHTML = repoInfo.language
+
     updated.innerHTML = formatDate(repoInfo.updated_at)
     button.innerHTML = "Ir para repositório"
     button.href = repoInfo.html_url
@@ -30,7 +79,7 @@ function createRepoCard(repoInfo){
 
     card.appendChild(cardBody)
     cardBody.appendChild(title)
-    cardBody.appendChild(linguagens)
+    cardBody.appendChild(createRepoLangImg(repoInfo.language))
     cardBody.appendChild(updated)
     cardBody.appendChild(button)
 
