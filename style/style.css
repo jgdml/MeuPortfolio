@@ -4,9 +4,8 @@
 
 .light{
     --bgColor: white;
-    --bgColorLight: rgba(255, 255, 255, 0.801);
-    
-    --bgText: white;
+    --bgColorLight: rgb(248, 248, 248);
+
 
     --fontColor: rgb(70, 70, 70);
     --activeColor: rgb(130, 119, 236); 
@@ -16,8 +15,6 @@
 .dark{
     --bgColor: rgb(20, 20, 20);
     --bgColorLight: rgb(25, 25, 25);
-
-    --bgText: rgb(20, 20, 20);
 
     --fontColor: rgb(230, 230, 230);
     --activeColor: rgba(5, 233, 184, 0.89);
@@ -35,7 +32,7 @@
 
     background-color: var(--bgColor);
 
-    margin-bottom: 10vh;
+    margin-bottom: 25vh;
 }
 
 

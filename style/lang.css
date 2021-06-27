@@ -11,4 +11,14 @@
 .langImg{
     height: 8vh;
     transition: 200ms;
+
+    padding: 2vh;
+
+    background-color: var(--bgColorLight);
+
+    border-radius: 0.8vh;
+}
+
+.langImg:hover{
+    height: 9vh;
 }

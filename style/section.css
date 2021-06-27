@@ -46,3 +46,47 @@
     justify-items: center;
     align-items: center;
 }
+
+.xpSection{
+    width: 100%;
+}
+
+.xpSectionContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    border: 1px solid var(--highlightColor);
+
+    border-radius: 0.8vh;
+    transition: 150ms;
+}
+
+.xpSectionContainer:hover{
+    box-shadow: 1px 1px 5px;
+}
+
+.xpLogo{
+    width: 12vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+    padding: 1vh;
+
+    background-color: var(--bgColorLight);
+
+    border-radius: 0.8vh;
+}
+
+.xpInfo{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+    padding: 3vh;
+
+    background-color: var(--bgColorLight);
+
+    border-radius: 0.8vh;
+}
+
