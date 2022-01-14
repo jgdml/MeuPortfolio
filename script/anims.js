@@ -15,12 +15,14 @@ function setAge(){
     // locallizar o elemento de idade
     var age = document.getElementById("age")
     // dt nascimento
-    var dt = new Date(2001, 0, 28)
+    var dt = new Date("01/28/2001")
     var currentDt = new Date()
+
+    console.log(dt)
 
     // subtração da data de hoje e 
     // data de nascimento convertido para anos
-    age.innerHTML = Math.trunc((currentDt - dt) / (1000 * 3600 * 24)/360)
+    age.innerHTML = ((currentDt.getTime() - dt.getTime()) / (1000 * 3600 * 24)) / 365
 }
 
 setAge()
