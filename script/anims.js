@@ -18,11 +18,11 @@ function setAge(){
     var dt = new Date("01/28/2001")
     var currentDt = new Date()
 
-    console.log(dt)
+    var anos = ((currentDt.getTime() - dt.getTime()) / (1000 * 3600 * 24)) / 365
 
     // subtração da data de hoje e 
     // data de nascimento convertido para anos
-    age.innerHTML = ((currentDt.getTime() - dt.getTime()) / (1000 * 3600 * 24)) / 365
+    age.innerHTML = parseInt(anos)
 }
 
 setAge()
