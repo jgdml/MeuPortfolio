@@ -1,0 +1,147 @@
+:root {
+  --bgColor: #c9ada7;
+  --fgColor: #f2e9e4;
+  --highlightColor: #4a4e69;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  background-color: var(--bgColor);
+}
+
+.mainContainer {
+  width: 70%;
+  height: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+
+  background-color: var(--fgColor);
+
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+
+.overlay{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  transition: 500ms;
+  transition-delay: 750ms;
+}
+
+.blur-filter{
+  z-index: 2;
+  backdrop-filter: blur(5px) brightness(0.8);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10%;
+  font-size: large;
+  
+  margin: 0px;
+  color: var(--highlightColor);
+
+  background-color: var(--fgColor);
+
+  border-radius: 0px;
+  border: 1px var(--highlightColor);
+}
+
+.card-modal{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  align-self: center;
+  z-index: 3;
+  transform: translateY(-100vh);
+}
+
+.card-small{
+  cursor: pointer;
+  animation-name: slideIn;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+
+  transition-duration: 250ms;
+  transition-timing-function: ease-out;
+
+  flex: 1 0 25%;
+
+  padding: 2%;
+}
+
+.card-small:hover {
+  background-color: var(--highlightColor);
+  color: var(--bgColor);
+  transform: translateY(-10%);
+}
+
+.card-small:nth-child(1) {
+  animation-delay: 250ms;
+}
+.card-small:nth-child(2) {
+  animation-delay: 500ms;
+}
+.card-small:nth-child(3) {
+  animation-delay: 750ms;
+}
+.card-small:nth-child(4) {
+  animation-delay: 1000ms;
+}
+.card-small:nth-child(5) {
+  animation-delay: 1250ms;
+}
+.card-small:nth-child(6) {
+  animation-delay: 1500ms;
+}
+.card-small:nth-child(7) {
+  animation-delay: 1750ms;
+}
+.card-small:nth-child(8) {
+  animation-delay: 2000ms;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0%;
+    transform: translateY(-100px);
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.rotation {
+  animation-name: rotationFrames;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 0ms !important;
+  z-index: 1;
+}
+
+@keyframes rotationFrames {
+  25%{
+    color: transparent;
+  }
+  50%{
+    color: transparent;
+    transform: rotateY(180deg);
+  }
+  100% {
+    color: transparent;
+    transform: rotateY(180deg) translateY(-100vh);
+  }
+}
