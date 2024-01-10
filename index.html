@@ -22,9 +22,10 @@
 </head>
 
 <body>
-    <div class="card card-modal">
+    <div id="infoModal" class="card card-modal">
         asdfsf
     </div>
+    <div id="clickOverlay" ></div>
     <div id="overlay" class="overlay"></div>
     <div id="mainContainer" class="mainContainer">
         <div class="card card-small">
@@ -60,35 +61,49 @@
     </div>
 
     <script>
-        toggleCard = function() {
-            $("#overlay").toggleClass("blur-filter");
-            currentCard.toggleClass("rotation");
-        }
-        effect3d = (e) => {
-            calcX = (e.pageX - window.screen.width / 2) / (window.screen.width / 2);
-            calcY = (e.pageY - window.screen.height / 2) / (window.screen.height / 2);
-
-            mainContainer.style.transform = `rotateY(${calcX * 15}deg) rotateX(${-calcY * 15}deg)`;
-            mainContainer.style.boxShadow = `rgba(0, 0, 0, 0.25) ${-calcX * 50}px ${-calcY * 50}px 10px`;
-        }
-
-        var mainContainer = document.getElementById("mainContainer");
-        var calcX = 0;
-        var calcY = 0;
-        var intensity = 5;
-        var currentCard = null;
-        
         $(document).ready(() => {
+            var mainContainer = $("#mainContainer");
+            var overlay = $("#overlay")
+            var clickOverlay = $("#clickOverlay")
+            var midScreen = [window.innerWidth / 2, window.innerHeight / 2]
+            var calcX = 0;
+            var calcY = 0;
+            var currentCard = null;
+
+            enableOverlay = function () {
+                clickOverlay.addClass("click-overlay");
+                overlay.addClass("blur-filter");
+                currentCard.addClass("rotationTrigger");
+            }
+
+            disableOverlay = function () {
+                clickOverlay.removeClass("click-overlay");
+                overlay.removeClass("blur-filter");
+                currentCard.removeClass("rotationTrigger");
+            }
+
+            effect3d = (e) => {
+                calcX = (e.pageX - midScreen[0]) / midScreen[0];
+                calcY = (e.pageY - midScreen[1]) / midScreen[1];
+                mainContainer.css({
+                    "transform": `rotateY(${calcX * 15}deg) rotateX(${-calcY * 15}deg)`,
+                    "box-shadow": `rgba(0, 0, 0, 0.25) ${-calcX * 50}px ${-calcY * 50}px 10px`
+                })
+            }
+
+            $(window).on("resize", () => {
+                midScreen = [window.innerWidth / 2, window.innerHeight / 2];
+            })
+
             $(document).on("mousemove", effect3d);
 
-            $(".card-small").on("click", function() {
+            $(".card-small").on("click", function () {
                 currentCard = $(this);
-                toggleCard();
+                enableOverlay();
             });
 
-            $("#overlay").on("click", function(){
-                toggleCard();
-            })
+            overlay.on("click", disableOverlay);
+
         })
 
     </script>

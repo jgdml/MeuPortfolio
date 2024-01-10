@@ -8,11 +8,33 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   text-align: center;
 
   background-color: var(--bgColor);
+}
+
+.click-overlay{
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.overlay {
+  visibility: hidden;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(0px) brightness(1);
+  transition: 500ms 750ms;
+}
+
+.blur-filter {
+  visibility:visible;
+  backdrop-filter: blur(5px) brightness(0.8);
 }
 
 .mainContainer {
@@ -28,45 +50,29 @@ body {
   transition-timing-function: ease-out;
 }
 
-.overlay{
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  transition: 500ms;
-  transition-delay: 750ms;
-}
-
-.blur-filter{
-  z-index: 2;
-  backdrop-filter: blur(5px) brightness(0.8);
-}
-
 .card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10%;
   font-size: large;
-  
+
   margin: 0px;
   color: var(--highlightColor);
 
   background-color: var(--fgColor);
-
-  border-radius: 0px;
-  border: 1px var(--highlightColor);
 }
 
-.card-modal{
-  width: 100%;
-  height: 100%;
+.card-modal {
+  width: 50%;
+  height: 90%;
   position: fixed;
   align-self: center;
   z-index: 3;
   transform: translateY(-100vh);
 }
 
-.card-small{
+.card-small {
   cursor: pointer;
   animation-name: slideIn;
   animation-duration: 1s;
@@ -114,17 +120,17 @@ body {
 @keyframes slideIn {
   0% {
     opacity: 0%;
-    transform: translateY(-100px);
+    transform: translateY(-100%);
   }
   50% {
     opacity: 100%;
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
 }
 
-.rotation {
+.rotationTrigger {
   animation-name: rotationFrames;
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -133,13 +139,17 @@ body {
 }
 
 @keyframes rotationFrames {
-  25%{
-    color: transparent;
+  0% {
+    background-color: var(--highlightColor);
   }
-  50%{
+  25% {
     color: transparent;
+    background-color: var(--highlightColor);
+  }
+  50% {
     transform: rotateY(180deg);
   }
+
   100% {
     color: transparent;
     transform: rotateY(180deg) translateY(-100vh);
