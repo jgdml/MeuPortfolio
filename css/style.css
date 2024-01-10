@@ -32,11 +32,6 @@ body {
   transition: 500ms 750ms;
 }
 
-.blur-filter {
-  visibility:visible;
-  backdrop-filter: blur(5px) brightness(0.8);
-}
-
 .mainContainer {
   width: 70%;
   height: 75%;
@@ -64,12 +59,19 @@ body {
 }
 
 .card-modal {
+  visibility: hidden;
   width: 50%;
   height: 90%;
   position: fixed;
   align-self: center;
+  justify-content: flex-start;
   z-index: 3;
   transform: translateY(-100vh);
+  transition: 500ms;
+  padding: 5%;
+  overflow: scroll;
+  overflow-x: hidden;
+  text-align: justify;
 }
 
 .card-small {
@@ -82,7 +84,6 @@ body {
   transition-timing-function: ease-out;
 
   flex: 1 0 25%;
-
   padding: 2%;
 }
 
@@ -117,6 +118,17 @@ body {
   animation-delay: 2000ms;
 }
 
+.blur-filter {
+  visibility:visible;
+  backdrop-filter: blur(5px) brightness(0.8);
+}
+
+.slideTransition{
+  transition-delay: 600ms;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 @keyframes slideIn {
   0% {
     opacity: 0%;
@@ -149,7 +161,6 @@ body {
   50% {
     transform: rotateY(180deg);
   }
-
   100% {
     color: transparent;
     transform: rotateY(180deg) translateY(-100vh);

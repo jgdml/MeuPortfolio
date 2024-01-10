@@ -23,9 +23,27 @@
 
 <body>
     <div id="infoModal" class="card card-modal">
-        asdfsf
+        <h1>Teste</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
-    <div id="clickOverlay" ></div>
+    <div id="clickOverlay"></div>
     <div id="overlay" class="overlay"></div>
     <div id="mainContainer" class="mainContainer">
         <div class="card card-small">
@@ -63,8 +81,10 @@
     <script>
         $(document).ready(() => {
             var mainContainer = $("#mainContainer");
-            var overlay = $("#overlay")
-            var clickOverlay = $("#clickOverlay")
+            var overlay = $("#overlay");
+            var clickOverlay = $("#clickOverlay");
+            var modalCard = $("#infoModal");
+
             var midScreen = [window.innerWidth / 2, window.innerHeight / 2]
             var calcX = 0;
             var calcY = 0;
@@ -74,12 +94,14 @@
                 clickOverlay.addClass("click-overlay");
                 overlay.addClass("blur-filter");
                 currentCard.addClass("rotationTrigger");
+                modalCard.addClass("slideTransition");
             }
 
             disableOverlay = function () {
                 clickOverlay.removeClass("click-overlay");
                 overlay.removeClass("blur-filter");
                 currentCard.removeClass("rotationTrigger");
+                modalCard.removeClass("slideTransition");
             }
 
             effect3d = (e) => {
