@@ -22,6 +22,11 @@
 </head>
 
 <body>
+    <header>
+        <div class="header"></div>
+        <h1>jgdml</h1>
+        <div class="header"></div>
+    </header>
     <div id="infoModal" class="card card-modal">
         <h1>Teste</h1>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -113,9 +118,7 @@
                 })
             }
 
-            $(window).on("resize", () => {
-                midScreen = [window.innerWidth / 2, window.innerHeight / 2];
-            })
+            $(window).on("resize", () => midScreen = [window.innerWidth / 2, window.innerHeight / 2])
 
             $(document).on("mousemove", effect3d);
 
