@@ -41,7 +41,7 @@ header h1{
 
 .header{
   background-color: var(--fgColor);
-  animation: headerFrames 1s 2s forwards ease-in-out;
+  animation: headerFrames 1s 2s forwards;
   height: 100%;
 }
 
@@ -66,9 +66,10 @@ header h1{
 .mainContainer {
   width: 70%;
   height: 75%;
+  align-self: center;
+
   display: flex;
   flex-wrap: wrap;
-  align-self: center;
 
   border-radius: var(--borderRadius);
   background-color: var(--fgColor);
@@ -133,7 +134,7 @@ header h1{
   transition-duration: 250ms;
   transition-timing-function: ease-out;
 
-  flex: 1 0 25%;
+  flex: 1 0 33%;
   padding: 2%;
 }
 

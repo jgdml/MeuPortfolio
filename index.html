@@ -20,9 +20,13 @@
     <!-- markdown displayer -->
     <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
 
-    <title>Portfólio</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
 
-    <link rel="stylesheet" href="./css/style.css" />
+    <!-- JS -->
+    <script type="module" src="js/main.js"></script>
+
+    <title>Portfólio</title>
 </head>
 
 <body>
@@ -40,118 +44,35 @@
             <template></template>
         </zero-md>
 
-        <h1>Teste</h1>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
     <div id="clickOverlay"></div>
     <div id="overlay" class="overlay"></div>
     <div id="mainContainer" class="mainContainer">
         <div class="card card-small">
             <i class="fa-solid fa-circle-info fa-2xl"></i>
-            <h2>Info</h2>
+            <h2>Sobre</h2>
             <p>Informações basicas sobre este card.</p>
         </div>
         <div class="card card-small">
-            <i class="fa-solid fa-circle-info fa-2xl"></i>
-            <h2>Info</h2>
+            <i class="fa-solid fa-code fa-2xl"></i>
+            <h2>Projetos</h2>
             <p>Informações basicas sobre este card.</p>
         </div>
         <div class="card card-small">
-            <i class="fa-solid fa-circle-info fa-2xl"></i>
-            <h2>Info</h2>
+            <i class="fa-solid fa-briefcase fa-2xl"></i>
+            <h2>Experiência</h2>
             <p>Informações basicas sobre este card.</p>
         </div>
         <div class="card card-small">
-            <i class="fa-solid fa-circle-info fa-2xl"></i>
-            <h2>Info</h2>
+            <i class="fa-solid fa-message fa-2xl"></i>
+            <h2>Contato</h2>
             <p>Informações basicas sobre este card.</p>
         </div>
         <div class="card card-small">
-            <i class="fa-solid fa-circle-info fa-2xl"></i>
-            <h2>Info</h2>
-            <p>Informações basicas sobre este card.</p>
-        </div>
-        <div class="card card-small">
-            <i class="fa-solid fa-circle-info fa-2xl"></i>
-            <h2>Info</h2>
+            <i class="fa-solid fa-wrench fa-2xl"></i>
+            <h2>Tecnologias</h2>
             <p>Informações basicas sobre este card.</p>
         </div>
     </div>
-
-    <script>
-        $(document).ready(() => {
-            var mainContainer = $("#mainContainer");
-            var overlay = $("#overlay");
-            var clickOverlay = $("#clickOverlay");
-            var modalCard = $("#infoModal");
-            var cardArrow = $("#cardArrow");
-
-            var midScreen = [window.innerWidth / 2, window.innerHeight / 2]
-            var calcX = 0;
-            var calcY = 0;
-            var lastMovement = Date.now() + 4000;
-            var currentCard = null;
-
-            enableOverlay = function () {
-                clickOverlay.addClass("click-overlay");
-                overlay.addClass("blur-filter");
-                currentCard.addClass("rotationTrigger");
-                modalCard.addClass("slideTransition");
-            }
-
-            disableOverlay = function () {
-                clickOverlay.removeClass("click-overlay");
-                overlay.removeClass("blur-filter");
-                currentCard.removeClass("rotationTrigger");
-                modalCard.removeClass("slideTransition");
-            }
-
-            effect3d = (e) => {
-                var now = Date.now();
-                if (lastMovement + 150 < now) {
-                    calcX = (e.pageX - midScreen[0]) / midScreen[0];
-                    calcY = (e.pageY - midScreen[1]) / midScreen[1];
-                    mainContainer.css({
-                        "transform": `rotateY(${calcX * 15}deg) rotateX(${-calcY * 15}deg)`,
-                        "box-shadow": `rgba(0, 0, 0, 0.25) ${-calcX * 50}px ${-calcY * 50}px 10px`
-                    })
-                    lastMovement = now;
-                }
-            }
-
-            $(window).on("resize", () => midScreen = [window.innerWidth / 2, window.innerHeight / 2])
-
-            $(document).on("mousemove", effect3d);
-
-            $(".card-small").on("click", function () {
-                currentCard = $(this);
-                enableOverlay();
-            });
-
-            overlay.on("click", disableOverlay);
-
-            cardArrow.on("click", disableOverlay);
-
-        })
-
-    </script>
 </body>
-
 </html>
