@@ -19,6 +19,7 @@ body {
 }
 
 zero-md{
+  display: none;
   color: var(--highlightColor);
   width: 100%;
 }
@@ -41,7 +42,6 @@ header h1{
 
 .header{
   background-color: var(--fgColor);
-  animation: headerFrames 1s 2s forwards;
   height: 100%;
 }
 
@@ -78,96 +78,6 @@ header h1{
   transition-timing-function: ease-out;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10%;
-  border-radius: var(--borderRadius);
-  border: none;
-
-  margin: 0px;
-  color: var(--highlightColor);
-
-  background-color: var(--fgColor);
-}
-
-.card-modal {
-  visibility: hidden;
-  width: 50%;
-  height: 90%;
-  position: fixed;
-  align-self: center;
-  justify-content: flex-start;
-  z-index: 3;
-  transform: translateY(-100vh);
-  transition: 500ms;
-  padding: 5%;
-  overflow: scroll;
-  overflow-x: hidden;
-  text-align: justify;
-}
-
-.cardArrow{
-  cursor: pointer;
-  transform: rotate(-90deg);
-  position: fixed;
-  left: 0;
-  top: 0;
-  transition: 500ms;
-  padding: 3%;
-  border-end-start-radius: var(--borderRadius);
-}
-
-.cardArrow:hover{
-  background-color: var(--highlightColor);
-  color: var(--bgColor);
-}
-
-.card-small {
-  cursor: pointer;
-  animation-name: slideIn;
-  animation-duration: 1s;
-  animation-fill-mode: backwards;
-
-  transition-duration: 250ms;
-  transition-timing-function: ease-out;
-
-  flex: 1 0 33%;
-  padding: 2%;
-}
-
-.card-small:hover {
-  background-color: var(--highlightColor);
-  color: var(--bgColor);
-  transform: translateY(-10%);
-}
-
-.card-small:nth-child(1) {
-  animation-delay: 250ms;
-}
-.card-small:nth-child(2) {
-  animation-delay: 500ms;
-}
-.card-small:nth-child(3) {
-  animation-delay: 750ms;
-}
-.card-small:nth-child(4) {
-  animation-delay: 1000ms;
-}
-.card-small:nth-child(5) {
-  animation-delay: 1250ms;
-}
-.card-small:nth-child(6) {
-  animation-delay: 1500ms;
-}
-.card-small:nth-child(7) {
-  animation-delay: 1750ms;
-}
-.card-small:nth-child(8) {
-  animation-delay: 2000ms;
-}
 
 .blur-filter {
   visibility:visible;
@@ -219,6 +129,9 @@ header h1{
   }
 }
 
+.headerAnimation{
+  animation: headerFrames 1s 2s forwards;
+}
 
 @keyframes headerFrames{
   from{

@@ -1,10 +1,11 @@
-import { Content, cardContents } from "./card-contents.js";
+import Content from "./card-contents.js";
 
 $(document).ready(() => {
   var mainContainer = $("#mainContainer");
   var overlay = $("#overlay");
   var clickOverlay = $("#clickOverlay");
   var modalCard = $("#infoModal");
+  var modalContent = $("#cardContent");
   var cardArrow = $("#cardArrow");
 
   var midScreen = [window.innerWidth / 2, window.innerHeight / 2];
@@ -51,9 +52,15 @@ $(document).ready(() => {
 
   $(".card-small").on("click", function () {
     currentCard = $(this);
-    var content = cardContents[currentCard.index()];
-
-    modalCard.prepend(`<h1>${content.title}</h1> <p>${content.text}</p>`);
+    var content = Content.cardContents[currentCard.index()];
+    
+    // $("zero-md").attr("src", Content.repos[currentCard.index()].text);
+    
+    modalContent.empty();
+    modalContent.append(`<h1>${content.title}</h1>`);
+    content.text.split(new RegExp("\n+\n")).forEach(p => {
+      modalContent.append(`<p>${p}</p>`)
+    });
     
     enableOverlay();
   });

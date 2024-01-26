@@ -1,0 +1,104 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  border-radius: var(--borderRadius);
+  border: none;
+
+  margin: 0px;
+  color: var(--highlightColor);
+
+  background-color: var(--fgColor);
+}
+
+.card-modal {
+  visibility: hidden;
+  width: 50%;
+  height: 90%;
+  position: fixed;
+  align-self: center;
+  z-index: 3;
+  transform: translateY(-100vh);
+  transition: 500ms;
+  padding: 5%;;
+}
+
+#cardContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    overflow-x: hidden;
+    text-align: justify;
+    line-height: 2;
+    gap: 2ch;
+}
+#cardContent h1{
+    font-weight: bold;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.card-arrow {
+  cursor: pointer;
+  transform: rotate(-90deg);
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: 500ms;
+  padding: 3%;
+  border-end-start-radius: var(--borderRadius);
+  border-start-end-radius: var(--borderRadius);
+}
+
+.card-arrow:hover {
+  background-color: var(--highlightColor);
+  color: var(--bgColor);
+}
+
+.card-small {
+  cursor: pointer;
+  animation-name: slideIn;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+
+  transition-duration: 250ms;
+  transition-timing-function: ease-out;
+
+  flex: 1 0 33%;
+  padding: 2%;
+}
+
+.card-small:hover {
+  background-color: var(--highlightColor);
+  color: var(--bgColor);
+  transform: translateY(-10%);
+}
+
+.card-small:nth-child(1) {
+  animation-delay: 250ms;
+}
+.card-small:nth-child(2) {
+  animation-delay: 500ms;
+}
+.card-small:nth-child(3) {
+  animation-delay: 750ms;
+}
+.card-small:nth-child(4) {
+  animation-delay: 1000ms;
+}
+.card-small:nth-child(5) {
+  animation-delay: 1250ms;
+}
+.card-small:nth-child(6) {
+  animation-delay: 1500ms;
+}
+.card-small:nth-child(7) {
+  animation-delay: 1750ms;
+}
+.card-small:nth-child(8) {
+  animation-delay: 2000ms;
+}

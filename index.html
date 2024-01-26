@@ -21,7 +21,9 @@
     <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="css/cards.css" />
     <link rel="stylesheet" href="css/style.css" />
+    
 
     <!-- JS -->
     <script type="module" src="js/main.js"></script>
@@ -31,17 +33,22 @@
 
 <body>
     <header>
-        <div class="header"></div>
+        <div class="header headerAnimation"></div>
         <h1>jgdml</h1>
-        <div class="header"></div>
+        <div class="header headerAnimation"></div>
     </header>
     <div id="infoModal" class="card card-modal">
-        <div id="cardArrow" class="cardArrow">
+        <div id="cardArrow" class="card-arrow">
             <i class="fa-solid fa-arrow-turn-up fa-2xl"></i>
         </div>
 
-        <zero-md src="https://raw.githubusercontent.com/jgdml/PopsApp/main/README.md">
-            <template></template>
+        <div id="cardContent">
+
+        </div>
+
+        <zero-md>
+            <template>
+            </template>
         </zero-md>
 
     </div>
@@ -51,28 +58,29 @@
         <div class="card card-small">
             <i class="fa-solid fa-circle-info fa-2xl"></i>
             <h2>Sobre</h2>
-            <p>Informações basicas sobre este card.</p>
+            <p>Algumas informações sobre mim.</p>
         </div>
         <div class="card card-small">
             <i class="fa-solid fa-code fa-2xl"></i>
             <h2>Projetos</h2>
-            <p>Informações basicas sobre este card.</p>
+            <p>Projetos em que eu trabalhei.</p>
         </div>
         <div class="card card-small">
             <i class="fa-solid fa-briefcase fa-2xl"></i>
             <h2>Experiência</h2>
-            <p>Informações basicas sobre este card.</p>
+            <p>Experiências profissionais que tive.</p>
         </div>
         <div class="card card-small">
             <i class="fa-solid fa-message fa-2xl"></i>
             <h2>Contato</h2>
-            <p>Informações basicas sobre este card.</p>
+            <p>Opções para contato.</p>
         </div>
         <div class="card card-small">
             <i class="fa-solid fa-wrench fa-2xl"></i>
             <h2>Tecnologias</h2>
-            <p>Informações basicas sobre este card.</p>
+            <p>Tecnologias que já utilizei.</p>
         </div>
     </div>
 </body>
+
 </html>
