@@ -53,15 +53,14 @@ $(document).ready(() => {
   $(".card-small").on("click", function () {
     currentCard = $(this);
     var content = Content.cardContents[currentCard.index()];
-    
+
     // $("zero-md").attr("src", Content.repos[currentCard.index()].text);
-    
+
     modalContent.empty();
-    modalContent.append(`<h1>${content.title}</h1>`);
-    content.text.split(new RegExp("\n+\n")).forEach(p => {
-      modalContent.append(`<p>${p}</p>`)
+    $.get(content, null, function (e) {
+      modalContent.append(e);
     });
-    
+
     enableOverlay();
   });
 

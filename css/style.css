@@ -18,11 +18,6 @@ body {
   font-size: large;
 }
 
-zero-md{
-  display: none;
-  color: var(--highlightColor);
-  width: 100%;
-}
 
 header{
   position: fixed;

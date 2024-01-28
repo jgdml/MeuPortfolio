@@ -28,12 +28,12 @@
 #cardContent {
     display: flex;
     flex-direction: column;
+    width: 100%;
     height: 100%;
-    overflow: hidden;
-    overflow-x: hidden;
     text-align: justify;
     line-height: 2;
     gap: 2ch;
+    overflow: auto;
 }
 #cardContent h1{
     font-weight: bold;
