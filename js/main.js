@@ -7,6 +7,7 @@ $(document).ready(() => {
   var modalCard = $("#infoModal");
   var modalContent = $("#cardContent");
   var cardArrow = $("#cardArrow");
+  var animationContainer = $("#animationContainer");
 
   var midScreen = [window.innerWidth / 2, window.innerHeight / 2];
   var calcX = 0;
@@ -19,6 +20,7 @@ $(document).ready(() => {
     overlay.addClass("blur-filter");
     currentCard.addClass("rotationTrigger");
     modalCard.addClass("slideTransition");
+    animationContainer.addClass("opacityTrigger")
   };
 
   var disableOverlay = function () {
@@ -26,6 +28,7 @@ $(document).ready(() => {
     overlay.removeClass("blur-filter");
     currentCard.removeClass("rotationTrigger");
     modalCard.removeClass("slideTransition");
+    animationContainer.removeClass("opacityTrigger")
   };
 
   var effect3d = (e) => {
@@ -58,10 +61,6 @@ $(document).ready(() => {
     $.get(content, null, function (e) {
       modalContent.append(e);
     });
-    if (currentCard.attr("id") == "proj") {
-      console.log($("zero-md"));
-      $("zero-md").attr("src", Content.repos[0].text);
-    }
 
     enableOverlay();
   });

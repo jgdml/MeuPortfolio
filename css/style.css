@@ -18,8 +18,7 @@ body {
   font-size: large;
 }
 
-
-header{
+header {
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -28,19 +27,19 @@ header{
   color: var(--highlightColor);
 }
 
-header h1{
+header h1 {
   transform: translateY(-150%);
   position: fixed;
   width: 100%;
   animation: slideIn 2s 3s forwards;
 }
 
-.header{
+.header {
   background-color: var(--fgColor);
   height: 100%;
 }
 
-.click-overlay{
+.click-overlay {
   position: fixed;
   z-index: 2;
   width: 100%;
@@ -73,13 +72,12 @@ header h1{
   transition-timing-function: ease-out;
 }
 
-
 .blur-filter {
-  visibility:visible;
+  visibility: visible;
   backdrop-filter: blur(5px) brightness(0.8);
 }
 
-.slideTransition{
+.slideTransition {
   transition-delay: 600ms;
   visibility: visible;
   transform: translateY(0);
@@ -124,15 +122,15 @@ header h1{
   }
 }
 
-.headerAnimation{
+.headerAnimation {
   animation: headerFrames 1s 2s forwards;
 }
 
-@keyframes headerFrames{
-  from{
+@keyframes headerFrames {
+  from {
     width: 0%;
   }
-  to{
+  to {
     width: 50%;
   }
 }
