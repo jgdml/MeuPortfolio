@@ -6,10 +6,10 @@ export default class Content {
 
   static cardContents = [
     "cards/sobre.html",
-    "cards/proj.html",
+    "cards/repos.html",
     "cards/exp.html",
-    "cards/cont.html",
-    "cards/tech.html",
+    "cards/contato.html",
+    "cards/tecnologias.html",
   ];
 
   static repos = [
@@ -24,6 +24,18 @@ export default class Content {
     new Content(
       "ImoVendas",
       "https://raw.githubusercontent.com/jgdml/ImoVendas/main/README.md"
+    ),
+    new Content(
+      "Portfolio",
+      "https://raw.githubusercontent.com/jgdml/MeuPortfolio/v2/README.md"
+    ),
+    new Content(
+      "Swiper",
+      "https://raw.githubusercontent.com/jgdml/Swiper/main/README.md"
+    ),
+    new Content(
+      "Lists",
+      "https://raw.githubusercontent.com/jgdml/Lists/main/README.md"
     ),
   ];
 }

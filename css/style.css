@@ -58,7 +58,7 @@ header h1{
   transition: 500ms 750ms;
 }
 
-.mainContainer {
+.main-container {
   width: 70%;
   height: 75%;
   align-self: center;

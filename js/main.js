@@ -54,12 +54,14 @@ $(document).ready(() => {
     currentCard = $(this);
     var content = Content.cardContents[currentCard.index()];
 
-    // $("zero-md").attr("src", Content.repos[currentCard.index()].text);
-
     modalContent.empty();
     $.get(content, null, function (e) {
       modalContent.append(e);
     });
+    if (currentCard.attr("id") == "proj") {
+      console.log($("zero-md"));
+      $("zero-md").attr("src", Content.repos[0].text);
+    }
 
     enableOverlay();
   });
@@ -67,4 +69,15 @@ $(document).ready(() => {
   overlay.on("click", disableOverlay);
 
   cardArrow.on("click", disableOverlay);
+
+  var testCard = function(){
+    currentCard = $(".card-small")
+    modalContent.empty();
+    $.get("cards/repos.html", null, function (e) {
+      modalContent.append(e);
+    });
+    enableOverlay();
+  }
+  
+  
 });

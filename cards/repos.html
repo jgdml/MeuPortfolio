@@ -1,5 +1,65 @@
-<h1>Projetos</h1>
-<zero-md id="md" src="https://raw.githubusercontent.com/jgdml/MeuPortfolio/v2/README.md">
+<!-- <img src="https://avatars.githubusercontent.com/u/47838646?v=4" alt="user"> -->
+<div class="navigation"></div>
+<zero-md>
     <template>
+        <style>
+            img {
+                max-width: 100% !important;
+            }
+        </style>
     </template>
 </zero-md>
+
+<style>
+    zero-md {
+        opacity: 0;
+        transition: 250ms;
+        max-width: 100%;
+        overflow-y: auto;
+    }
+
+    .navigation {
+        display: flex;
+        width: 100%;
+        height: 20%;
+        min-height: 20%;
+        flex-wrap: wrap;
+        border-radius: 5px;
+        border: 1px solid var(--highlightColor)
+    }
+
+    .nav-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1 0 33%;
+        background-color: var(--fgColor);
+        cursor: pointer;
+        transition: background-color 250ms;
+    }
+
+    .nav-item:hover {
+        background-color: var(--highlightColor);
+        color: var(--bgColor);
+    }
+</style>
+
+<script type="module">
+    import Content from "./js/card-contents.js";
+
+    Content.repos.forEach(repo => {
+        $(".navigation").append(`<div class="nav-item">${repo.title}</div>`)
+    });
+
+    $(".nav-item").on("click", function () {
+        var display = $("zero-md");
+        display.css("opacity", "0");
+        setTimeout(() => {
+            display.attr("src", Content.repos[$(this).index()].text);
+        }, 250);
+        setTimeout(() => {
+            display.css("opacity", "100%");
+        }, 500);
+    });
+
+</script>
