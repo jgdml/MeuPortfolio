@@ -87,10 +87,12 @@ header h1 {
   border-radius: 10px;
   border: 2px solid var(--highlightColor);
   padding: 5%;
+  flex-wrap: wrap;
 }
 
 .item {
-  width: 6em;
+  
+  flex: 0 1 6em;
 }
 
 .item:hover>* {
