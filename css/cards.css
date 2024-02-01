@@ -33,7 +33,8 @@
   text-align: justify;
   line-height: 2;
   gap: 2ch;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 1%;
 }
 #cardContent h1 {
