@@ -1,14 +1,28 @@
 <h1>Contato</h1>
 
 <div class="item-list">
-    <a class="item" target="_blank" href="mailto:jgdml2801@gmail.com">
+    <a class="item" target="" href="#" onclick="sendEmail();">
         <i class="fa-solid fa-envelope fa-7x"></i>
     </a>
+
     <a class="item" target="_blank"
         href="https://www.linkedin.com/in/jo%C3%A3o-gabriel-durante-marques-de-lima-0976b622b/">
-        <img src="img/linkedin.png" alt="Linkedin logo">
+        <i class="fa-brands fa-linkedin fa-7x"></i>
     </a>
     <a class="item" target="_blank" href="https://github.com/jgdml">
-        <img src="img/ghub.png" alt="Github logo">
+        <i class="fa-brands fa-github fa-7x"></i>
     </a>
+
+    <style>
+        @media only screen and (max-width: 1200px) {
+            .item-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <script>
+        var sendEmail = function () {
+            window.location.href = "mailto:" + atob("amdkbWwyODAxQGdtYWlsLmNvbQ==");
+        }
+    </script>
 </div>

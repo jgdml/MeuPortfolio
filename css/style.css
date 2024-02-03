@@ -23,8 +23,10 @@ header {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 7ch;
+  height: 6ch;
   color: var(--highlightColor);
+  z-index: 1;
+  animation: headerShadow 2s 3s forwards;
 }
 
 header h1 {
@@ -32,6 +34,7 @@ header h1 {
   position: fixed;
   width: 100%;
   animation: slideIn 2s 3s forwards;
+  font-size: 4ch;
 }
 
 .header {
@@ -61,20 +64,23 @@ header h1 {
   width: 70%;
   height: 75%;
   align-self: center;
+  margin-top: 10ch;
+  margin-bottom: 10ch;
 
   display: flex;
   flex-wrap: wrap;
 
   border-radius: var(--borderRadius);
   background-color: var(--fgColor);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px;
 
   transition-duration: 500ms;
   transition-timing-function: ease-out;
 }
 
-.circle{
-  width: 15ch;
-  height: 15ch;
+.circle {
+  width: 12ch;
+  height: 12ch;
   border-radius: 50%;
   border: 2px var(--highlightColor) solid;
 }
@@ -85,21 +91,19 @@ header h1 {
   align-items: center;
   width: 100%;
   border-radius: 10px;
-  border: 2px solid var(--highlightColor);
   padding: 5%;
   flex-wrap: wrap;
 }
 
 .item {
-  
   flex: 0 1 6em;
 }
 
-.item:hover>* {
+.item:hover > * {
   transform: rotateY(360deg);
 }
 
-.item>* {
+.item > * {
   width: 100%;
   transition: 2s;
   transition-timing-function: ease-out;
@@ -138,6 +142,11 @@ header h1 {
   z-index: 1;
 }
 
+
+.headerAnimation {
+  animation: headerFrames 1s 2s forwards;
+}
+
 @keyframes rotationFrames {
   0% {
     background-color: var(--highlightColor);
@@ -156,15 +165,24 @@ header h1 {
   }
 }
 
-.headerAnimation {
-  animation: headerFrames 1s 2s forwards;
-}
-
 @keyframes headerFrames {
   from {
     width: 0%;
   }
   to {
     width: 50%;
+  }
+}
+@keyframes headerShadow{
+  100%{
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .main-container {
+    width: 95%;
+    height: 200vh;
+    align-self: flex-start;
   }
 }
