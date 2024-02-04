@@ -14,6 +14,7 @@ $(document).ready(() => {
   var modalCard = $("#infoModal");
   var modalContent = $("#cardContent");
   var cardArrow = $("#cardArrow");
+  var cardIcon = $("#cardIcon");
   var animationContainer = $("#animationContainer");
 
   var enableOverlay = function () {
@@ -38,7 +39,7 @@ $(document).ready(() => {
       calcX = (e.pageX - midScreen[0]) / midScreen[0];
       calcY = (e.pageY - midScreen[1]) / midScreen[1];
       mainContainer.css({
-        "transform": `rotateY(${calcX * 15}deg) rotateX(${-calcY * 15}deg)`,
+        transform: `rotateY(${calcX * 15}deg) rotateX(${-calcY * 15}deg)`,
         "box-shadow": `rgba(0, 0, 0, 0.25) ${-calcX * 50}px ${
           -calcY * 50
         }px 10px`,
@@ -58,8 +59,10 @@ $(document).ready(() => {
     var content = Content.cardContents[currentCard.index()];
 
     modalContent.empty();
-    $.get(content, null, function (e) {
-      modalContent.append(e);
+    $.get(content, null, function (element) {
+      cardIcon.removeClass();
+      cardIcon.addClass(currentCard.children("i").attr("class"));
+      modalContent.append(element);
     });
 
     enableOverlay();

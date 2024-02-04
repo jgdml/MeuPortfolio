@@ -22,27 +22,6 @@
   z-index: 3;
   transform: translateY(-100vh);
   transition: 500ms;
-  padding: 5%;
-  padding-top: 8ch;
-}
-
-#cardContent {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  text-align: justify;
-  line-height: 2;
-  gap: 2ch;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 1%;
-}
-#cardContent h1 {
-  font-weight: bold;
-  text-align: center;
-  padding-top: 2%;
-  padding-bottom: 2%;
 }
 
 #animationContainer {
@@ -52,21 +31,54 @@
   height: 100%;
 }
 
+#cardContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  text-align: justify;
+  line-height: 2;
+  gap: 2ch;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 6%;
+}
+#cardContent h1 {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
 .opacityTrigger {
   transition: opacity 1s 1s !important;
   opacity: 100% !important;
 }
 
+.card-header {
+  width: 100%;
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--fgColor);
+  border-top-left-radius: var(--borderRadius) !important;
+  border-top-right-radius: var(--borderRadius) !important;
+}
+
+.card-header i:nth-child(2) {
+  margin-right: 49%;
+}
+
 .card-arrow {
   cursor: pointer;
-  transform: rotate(-90deg);
-  position: fixed;
-  left: 0;
-  top: 0;
   transition: 500ms;
   padding: 3ch;
-  border-end-start-radius: var(--borderRadius);
-  border-start-end-radius: var(--borderRadius);
+  border-top-left-radius: var(--borderRadius);
+}
+
+.card-arrow i {
+  transform: rotate(-90deg);
 }
 
 .card-arrow:hover {
@@ -120,11 +132,11 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  .card-small{
+  .card-small {
     flex: 1 0 100%;
     height: 20%;
   }
-  .card-modal{
+  .card-modal {
     width: 95%;
   }
 }
