@@ -1,20 +1,34 @@
 <div class="navigation"></div>
-<zero-md>
-    <template>
-        <style>
-            img {
-                max-width: 100% !important;
-            }
-        </style>
-    </template>
-</zero-md>
+<div class="md-body">
+    <a class="item github-link" target="_blank" href="https://github.com">
+        <i class="fa-brands fa-github fa-4x"></i>
+    </a>
+    <zero-md>
+        <template>
+            <style>
+                img {
+                    max-width: 100% !important;
+                }
+            </style>
+        </template>
+    </zero-md>
+</div>
 
 <style>
     zero-md {
-        opacity: 0;
         transition: 250ms;
         max-width: 100%;
         overflow-y: auto;
+    }
+
+    .github-link {
+        display: block;
+        width: 4em;
+    }
+
+    .md-body {
+        opacity: 0;
+        transition: 250ms;
     }
 
     .navigation {
@@ -47,15 +61,25 @@
 <script type="module">
     import Content from "./js/card-contents.js";
 
+    var gLink = $(".github-link");
+
     Content.repos.forEach(repo => {
         $(".navigation").append(`<div class="nav-item">${repo.title}</div>`)
     });
 
     $(".nav-item").on("click", function () {
-        var display = $("zero-md");
+        var readmeLink = Content.repos[$(this).index()].text;
+
+        gLink.attr("href", readmeLink.replace("raw.githubusercontent", "github").
+            split("/").
+            slice(0, -2).
+            join("/")
+        )
+
+        var display = $(".md-body");
         display.css("opacity", "0");
         setTimeout(() => {
-            display.attr("src", Content.repos[$(this).index()].text);
+            $("zero-md").attr("src", readmeLink);
         }, 250);
         setTimeout(() => {
             display.css("opacity", "100%");
